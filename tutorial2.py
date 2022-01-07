@@ -1,0 +1,166 @@
+'''
+def area(radius):
+    area = 22/7 * radius ** 2
+    print(area)
+area(14)
+for letters in "Hello":
+    print(letters)
+for i in range(20,0,-1):
+    print(i,end=' ')
+for j in range(10,20):
+    if j%2 !=0  and j%3 !=0 and j%5 !=0 and j%7 !=0:
+        print(j)
+for i in range(5):
+    for j in range(i+1):
+        print("!",end='')
+    print(" ")
+def currancy(Ksh):
+    dollars = Ksh / 102.2
+    Euros = Ksh / 116.3
+    Ush = Ksh / 0.55
+    Tsh = Ksh / 0.2
+    print('In dollars is {:.2f} in Euros is  {:.2f} in Ugandan shilling is {:.2f} in Tanzanian shilling is {:.2f}'.format(dollars,Euros,Ush,Tsh))
+currancy(200)
+currancy(1872)
+'''
+#GUI
+from tkinter import *
+#widgets = GUI elements: buttons, textboxes, lables, images
+#windows = serves as a comtainer to hold or contain these widgets
+#for entry button
+'''
+def submit():
+    username = entry.get()
+    print("Helo",username)
+def delete():
+    entry.delete(0,END)
+def clear():
+    entry.delete(len(entry.get())-1,END)
+'''
+#for radio button
+food = ['Pilau','Chicken','Beef','Pizza']
+def order():
+    if (x.get()==0):
+        print("You ordered  Pilau")
+    elif (x.get()==1):
+        print("You ordered Chicken")
+    elif (x.get()==2):
+        print("You ordered  beef")
+    elif (x.get()==3):
+        print("You ordered Pizza")
+    else:
+        print("Huh! is like you are full")
+#for scale
+def submit():
+    print("The temperature is:",scale.get(),"degrees C")
+#for listbox
+def submit2():
+    #choice = listbox.get(listbox.curselection())#for single submition
+    '''for multiple submition'''
+
+    food = []
+    for index in listbox.curselection():
+        food.insert(index,listbox.get(index))
+    print("You have ordered:")
+    for index in food:
+        print(index)
+def add():
+    listbox.insert(listbox.size(),entrybox1.get())
+    listbox.config(height=listbox.size())
+def delete():
+    #listbox.delete(listbox.curselection()) #for single delete
+    for index in reversed(listbox.curselection()):
+        listbox.delete(index)
+    listbox.config(height=listbox.size())
+window = Tk() #instntiate an instance of a window
+#window.geometry("420x360") for size
+window.title("Joseph first GUI program")
+icon = PhotoImage(file = "LOGO.png")
+window.iconphoto(True,icon)
+#lable = an area widget that holds text and/or an image within a window
+photo = PhotoImage(file="LOGO.png")
+lable = Label(window,text="Hello Joseph",
+              font=("Times New Roman",35,"bold","italic"),
+              fg="green",bg="purple",
+              relief=RAISED,
+              bd=10,padx=20,pady=20,image=photo,
+              compound='bottom')
+
+#lable.pack()
+#button = you click it,vthen  it add a stuff
+count = 0
+def click():
+    global count
+    count += 1
+    if count==1:
+        print("You have 1 like")
+    else:
+        print("You have", count, "likes")
+photo = PhotoImage(file="like1.png")
+button = Button(window,text="click to like",command=click,
+                font=("Comic Sans",15),
+                relief=RAISED,bd=10,
+                fg="green",bg="black",
+                activeforeground="green",activebackgroun="black",
+                state=ACTIVE,image=photo,compound="bottom")
+#entry widgets = textbox that accept a single line of user input
+entry = Entry(window,font=("Times New Roman",20),
+              relief=RAISED, bd=10,
+              fg="green", bg="black"
+              )
+#radio button = similar to checkbox, but you can only select one from a group
+x = IntVar()
+for index in range(len(food)):
+    radiobutton = Radiobutton(window,text=food[index],variable=x,value=index,
+                              bg="purple",activebackgroun="purple",padx=25,
+                              font=("Impact",20,"bold"),
+                              indicatoron=0,width=15,command=order)
+    radiobutton.pack(anchor=W)
+scale = Scale(window,from_=100,to=0,length=500,orient=HORIZONTAL,
+              tickinterval=10,showvalue=0,#resolution=5,
+               troughcolor='yellow',fg='red')
+submit_button1 = Button(window,text="Submit",command=submit,bg='blue',fg='red',
+                       activebackground='blue'
+                       )
+scale.set(((scale['from']-scale['to'])/2)+scale['to'])
+#listbox = A listing of selectable text items within its own container
+listbox = Listbox(window,bg="#f7ffde",font=("Constantia",15),
+                  width=12,selectmode=MULTIPLE)
+
+listbox.insert(1,"Chicken")
+listbox.insert(2,"Ugali")
+listbox.insert(3,"Fish")
+listbox.insert(4,"Pizza")
+#listbox.pack(side=LEFT)
+listbox.config(height=listbox.size())
+submit_button2 = Button(window,text="Submit",command=submit2,bg='blue',fg='red',
+                       activebackground='blue')
+entrybox1 = Entry(window)
+addbutton = Button(window,text="add",command=add)
+deletebutton = Button(window,text="delete",command=delete)
+'''
+#for list box
+submit_button2.pack(side=RIGHT)
+entrybox1.pack(side=LEFT)
+addbutton.pack(side=LEFT)
+deletebutton.pack(side=LEFT)
+'''
+#scale.pack()
+#submit_button1.pack(side=LEFT)
+#radiobutton.pack()
+#entry.pack(side=LEFT)
+'''
+submit_button = Button(window,text="Submit",command=submit)
+submit_button.pack(side=RIGHT)
+delete_button = Button(window,text="delete",command=delete)
+delete_button.pack(side=RIGHT)
+clear_button = Button(window,text="clear",command=clear)
+clear_button.pack(side=RIGHT)
+entry.insert(0,'default text')#default text
+'''
+#entry.config(show='*')#hide the text like in password
+#button.pack()
+#lable.place(x=100,y=100)
+window.config(background="purple")#you can search in google hex color picker for more color index
+window.mainloop()#dispalys our windows
+
