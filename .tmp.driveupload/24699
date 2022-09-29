@@ -1,0 +1,7 @@
+num = []
+while True:
+    i = int(input("Enter the numbers: "))
+    num.append(i)
+    if i<=0:
+        break
+print(num)

@@ -1,10 +1,11 @@
 import random
-number = random.randint(1,10)
-for i in range(0,3):
-    user = int(input("gues the number"))
+for i in range(5):
+    number = random.randint(1,10)
+    user = eval(input("Guess the number: "))
     if user == number:
         print("hurray")
-        print("you guessed right it's " +str(number))
+        print("you guessed right it's ",number)
         break
-if user != number:
-    print("INCORRECT the number is "+str(number))
+    else:
+        print("INCORRECT the number is ",number)
+print("Thanks for playing!!..")
